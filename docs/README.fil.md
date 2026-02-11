@@ -1,6 +1,7 @@
-<p align="right">  
+<p align="right">
   <a href="#downloads"><img src="https://user-images.githubusercontent.com/8535921/189104931-527ab8bc-8757-4e04-8150-5207d2077bb8.png" title="linux"></a>
   <a href="#downloads"><img src="https://user-images.githubusercontent.com/8535921/189104940-ade062d9-d2e0-4e08-83a4-f34cdb457025.png" title="windows"></a>
+  <a href="#downloads"><img src="../assets/macos.png" height="28" title="macos"></a>
   <a href="#license"><img src="https://user-images.githubusercontent.com/8535921/189119543-b1f7cc20-bd0e-44e7-811a-c23b0ccdf767.png" title="open source"></a>
   <a href="http://www.binarynonsense.com/"><img src="https://user-images.githubusercontent.com/8535921/189104953-7ac2d4d1-7d36-483b-8cc9-3568d1cbf6e5.png" title="my website"></a>
   <a href="https://mastodon.social/@binarynonsense"><img src="https://github.com/binarynonsense/comic-book-reader/assets/8535921/053fff88-5e38-4928-8b50-9ecaf1be20f1" title="my mastodon"></a>
@@ -14,9 +15,9 @@ Isang comic book reader at converter para sa mga CBZ, CBR, CB7, EPUB at PDF na m
 
 <p align="center">
   <a href="./README.en.md">English</a> |
-  <a href="./README.es.md">Español</a> | 
-  <a href="./README.ru.md">Русский</a> | 
-  <a href="./README.de.md">Deutsch</a> | 
+  <a href="./README.es.md">Español</a> |
+  <a href="./README.ru.md">Русский</a> |
+  <a href="./README.de.md">Deutsch</a> |
   <a href="./README.ar.md">العربية</a> |
   <span>Filipino</span>
 </p>
@@ -31,7 +32,7 @@ Isang comic book reader at converter para sa mga CBZ, CBR, CB7, EPUB at PDF na m
 
 ## Mga Tampok:
 
-- Mga bersyon ng Windows at Linux
+- Mga bersyon ng Windows, Linux at macOS
 - Mga suportadong format ng file<sup>[1]</sup>:
   - Comic books:
     - CBZ, CBR, CB7, PDF<sup>[5]</sup> at EPUB<sup>[2]</sup>
@@ -106,10 +107,16 @@ Stable na Bersyon:
 
 - [Windows](https://github.com/binarynonsense/comic-book-reader/releases/latest/download/ACBR_Windows.zip)
 - [Windows (Self-Extracting)](https://github.com/binarynonsense/comic-book-reader/releases/latest/download/ACBR_Windows_SelfExtracting.exe)
+- [macOS (DMG)](https://github.com/sangorrin/comic-book-reader/releases/latest/download/ACBR_macOS.zip)
+- [macOS (ZIP)](https://github.com/sangorrin/comic-book-reader/releases/latest/download/ACBR_macOS_App.zip)
 - [Linux](https://github.com/binarynonsense/comic-book-reader/releases/latest/download/ACBR_Linux.zip)
 - [Linux (AppImage)](https://github.com/binarynonsense/comic-book-reader/releases/latest/download/ACBR_Linux_AppImage.zip)
 - [Linux (deb)](https://github.com/binarynonsense/comic-book-reader/releases/latest/download/ACBR_Linux_deb.zip)
 - [Linux (flatpak)](https://github.com/binarynonsense/comic-book-reader/releases/latest/download/ACBR_Linux_flatpak.zip)
+
+> Paalala: Para sa mga Linux distribution na nangangailangan ng pagtatakda ng AppArmor profile para sa mga Electron app na tumakbo, tulad ng Ubuntu 24.04, pinakamahusay na huwag pumili ng regular o AppImage na mga bersyon dahil malamang na hindi ito gagana bilang default dahil sa pagbabawal na ito.
+>
+> Paalala: Ang bersyon ng macOS ay nangangailangan ng macOS 10.13 o mas bago at binuo lamang para sa Apple Silicon (M1/M2/M3).
 
 Lahat ng bersyon (matatag at beta):
 

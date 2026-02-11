@@ -77,6 +77,10 @@ function sanitize() {
 ///////////////////////////////////////////////////////////////////////////////
 
 exports.save = function () {
+  if (!g_settings) {
+    log.warning("audio-player settings not initialized, skipping save");
+    return;
+  }
   let cfgFilePath = path.join(getConfigFolder(), g_fileName);
   let date = new Date().toJSON();
   g_settings.date = date;

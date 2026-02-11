@@ -36,6 +36,8 @@ function getRarCommand(rarFolderPath) {
   let command = "rar";
   if (process.platform === "win32") {
     command = "Rar.exe";
+  } else if (process.platform === "darwin" || process.platform === "linux") {
+    command = "rar";
   }
   if (rarFolderPath && rarFolderPath.trim !== "") {
     command = path.join(rarFolderPath, command);
@@ -87,6 +89,40 @@ exports.getDriveList = function () {
                 isRemovable: drive.rm,
                 isUSB: false,
               });
+            }
+          });
+        }
+      } catch (error) {
+        log.debug(error);
+      }
+    } else {
+      log.debug(cmdResult.stderr);
+    }
+  } else if (process.platform === "darwin") {
+    // macOS - use diskutil to list mounted volumes
+    const cmdResult = execShellCommand("diskutil", ["list", "-plist"]);
+    if (!cmdResult.error) {
+      try {
+        // Get all mounted volumes from /Volumes
+        const fs = require("fs");
+        const volumesPath = "/Volumes";
+        if (fs.existsSync(volumesPath)) {
+          const volumes = fs.readdirSync(volumesPath);
+          volumes.forEach((volume) => {
+            const volumePath = path.join(volumesPath, volume);
+            try {
+              const stats = fs.statSync(volumePath);
+              if (stats.isDirectory()) {
+                driveList.push({
+                  label: volume,
+                  size: "N/A",
+                  path: volumePath,
+                  isRemovable: false,
+                  isUSB: false,
+                });
+              }
+            } catch (error) {
+              // Skip volumes we can't access
             }
           });
         }

@@ -1,0 +1,12 @@
+IMPORTANT - macOS Users
+========================
+
+Due to macOS security (Gatekeeper), you may see an error saying the app is "damaged"
+when you try to open it. This is because the app is not signed with an Apple Developer
+certificate.
+
+TO FIX THIS open Terminal and run:
+
+    xattr -cr "/Applications/ACBR Comic Book Reader.app"
+
+(Adjust the path if you installed it elsewhere)

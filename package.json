@@ -37,6 +37,53 @@
         "**/node_modules/7zip-bin/**"
       ]
     },
+    "mac": {
+      "category": "public.app-category.graphics-design",
+      "icon": "./src/assets/images/icon_512x512.png",
+      "target": [
+        {
+          "target": "dmg",
+          "arch": [
+            "arm64"
+          ]
+        },
+        {
+          "target": "zip",
+          "arch": [
+            "arm64"
+          ]
+        }
+      ],
+      "artifactName": "${name}-${version}-${arch}.${ext}",
+      "asarUnpack": [
+        "**/node_modules/sharp/**",
+        "**/node_modules/@img/**/*",
+        "**/node_modules/7zip-bin/**"
+      ],
+      "files": [
+        "!node_modules/sharp/vendor/8.*/**/*",
+        "!node_modules/7zip-bin/win/**/*",
+        "!node_modules/7zip-bin/linux/**/*"
+      ]
+    },
+    "dmg": {
+      "contents": [
+        {
+          "x": 130,
+          "y": 220
+        },
+        {
+          "x": 410,
+          "y": 220,
+          "type": "link",
+          "path": "/Applications"
+        }
+      ],
+      "window": {
+        "width": 540,
+        "height": 380
+      }
+    },
     "flatpak": {
       "finishArgs": [
         "--socket=x11",
@@ -61,16 +108,21 @@
     "start:glib": "export G_SLICE=always-malloc && electron . --dev",
     "dist:linux": "npm run 7zbin:linux && npm run build:linux && npm run extras:linux",
     "dist:windows": "npm run build:windows && npm run extras:windows",
+    "dist:mac": "npm run sharp:mac && npm run 7zbin:mac && npm run build:mac && npm run extras:mac",
     "dist:cross": "npm run dist:cross-windows && npm run dist:cross-linux",
     "dist:cross-linux": "npm run sharp:linux && npm run dist:linux",
     "dist:cross-windows": "npm run sharp:windows && npm run dist:windows",
     "build:linux": "electron-builder --linux --publish never",
     "build:windows": "electron-builder --win --dir --publish never",
+    "build:mac": "electron-builder --mac --publish never",
     "sharp:windows": "del-cli ./node_modules/sharp && npm install --platform=win32 --arch=x64 sharp",
     "sharp:linux": "del-cli ./node_modules/sharp && npm install --platform=linux --arch=x64 sharp",
+    "sharp:mac": "del-cli ./node_modules/sharp && npm install --platform=darwin --arch=arm64 sharp",
     "7zbin:linux": "shx chmod +x node_modules/7zip-bin/linux/x64/7za",
+    "7zbin:mac": "shx chmod +x node_modules/7zip-bin/mac/arm64/7za",
     "extras:linux": "echo '#!/bin/bash\\nexport G_SLICE=always-malloc && ./acbr-comic-book-reader \"$@\"' > ./dist/linux-unpacked/ACBR.sh && shx chmod +x ./dist/linux-unpacked/ACBR.sh && echo '#!/bin/bash\\nexport G_SLICE=always-malloc && ./acbr-comic-book-reader.AppImage \"$@\"' > ./dist/ACBR.sh && shx chmod +x ./dist/ACBR.sh && echo '#!/bin/bash\\nexport G_SLICE=always-malloc && acbr-comic-book-reader \"$@\"' > ./dist/ACBR_deb.sh && shx chmod +x ./dist/ACBR_deb.sh && echo ${npm_package_version} > ./dist/linux-unpacked/VERSION && echo ${npm_package_version} > ./dist/VERSION",
     "extras:windows": "echo %npm_package_version% > ./dist/win-unpacked/VERSION",
+    "extras:mac": "echo ${npm_package_version} > ./dist/mac-arm64/ACBR\\ Comic\\ Book\\ Reader.app/Contents/Resources/VERSION",
     "licenses": "license-checker > licenses/node_modules.txt && shx sed -i 's/path.*node_modules/path: node_modules/' ./licenses/node_modules.txt && shx sed -i 's/licenseFile.*node_modules/licenseFile: node_modules/' ./licenses/node_modules.txt && npm run localization licenses",
     "localization:update": "node ./tools/localization.js update all",
     "localization:state": "node ./tools/localization.js state all",
@@ -102,7 +154,7 @@
     "pdfkit": "0.17.1",
     "qrcode": "1.5.4",
     "sanitize-html": "2.17.0",
-    "sharp": "0.33.5",
+    "sharp": "^0.33.5",
     "tesseract.js": "3.0.3"
   }
 }

@@ -120,6 +120,13 @@ function getExeFolderPath() {
         return path.join(app.getAppPath(), "../../");
       }
     }
+  } else if (process.platform === "darwin") {
+    // macOS - in .app bundle structure: Contents/Resources/app.asar
+    if (process.argv[2] == "--dev") {
+      return process.cwd();
+    } else {
+      return path.join(app.getAppPath(), "../../");
+    }
   } else {
     // win
     return path.join(app.getAppPath(), "../../");

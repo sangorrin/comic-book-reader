@@ -1,0 +1,52 @@
+name: Build ACBR
+on:
+  release:
+    types: [published]
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: macos-14
+    steps:
+      - name: CHECKOUT
+        uses: actions/checkout@v4
+
+      - name: SETUP NODE
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20.x"
+
+      - name: INSTALL PACKAGES
+        run: npm ci
+
+      - name: RUN DIST (MACOS)
+        run: npm run dist:mac
+
+      - name: LS DIST
+        run: ls ./dist
+
+      - name: PREPARE FILES (MACOS)
+        run: |
+          mkdir ./dist/ACBR_macOS
+          cp -r ./dist/*.dmg ./dist/ACBR_macOS/ || true
+          cp -r licenses ./dist/ACBR_macOS/licenses
+          cp IMPORTANT_MACOS.txt ./dist/ACBR_macOS/
+          mkdir ./dist/ACBR_macOS_zip
+          unzip ./dist/*.zip -d ./dist/ACBR_macOS_zip/
+          cp -r licenses ./dist/ACBR_macOS_zip/licenses
+          cp IMPORTANT_MACOS.txt ./dist/ACBR_macOS_zip/
+
+      - name: PREPARE ZIPS (MACOS)
+        run: |
+          cd ./dist
+          zip -r ./ACBR_macOS.zip ./ACBR_macOS
+          zip -r ./ACBR_macOS_App.zip ./ACBR_macOS_zip
+
+      - name: UPLOAD TO RELEASE
+        uses: softprops/action-gh-release@v2
+        with:
+          files: |
+            ./dist/ACBR_macOS.zip
+            ./dist/ACBR_macOS_App.zip

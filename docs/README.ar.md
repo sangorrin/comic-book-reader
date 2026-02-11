@@ -1,6 +1,7 @@
-<p align="right">  
+<p align="right">
   <a href="#downloads"><img src="https://user-images.githubusercontent.com/8535921/189104931-527ab8bc-8757-4e04-8150-5207d2077bb8.png" title="linux"></a>
   <a href="#downloads"><img src="https://user-images.githubusercontent.com/8535921/189104940-ade062d9-d2e0-4e08-83a4-f34cdb457025.png" title="windows"></a>
+  <a href="#downloads"><img src="../assets/macos.png" height="28" title="macos"></a>
   <a href="#license"><img src="https://user-images.githubusercontent.com/8535921/189119543-b1f7cc20-bd0e-44e7-811a-c23b0ccdf767.png" title="open source"></a>
   <a href="http://www.binarynonsense.com/"><img src="https://user-images.githubusercontent.com/8535921/189104953-7ac2d4d1-7d36-483b-8cc9-3568d1cbf6e5.png" title="my website"></a>
   <a href="https://mastodon.social/@binarynonsense"><img src="https://github.com/binarynonsense/comic-book-reader/assets/8535921/053fff88-5e38-4928-8b50-9ecaf1be20f1" title="my mastodon"></a>
@@ -13,11 +14,11 @@
 ![git_banner](https://github.com/user-attachments/assets/6ef7ded2-749a-4efd-a6b7-109d0f33d603)
 
 <p align="center">
-  <a href="./README.en.md">English</a> | 
-  <a href="./README.es.md">Español</a> | 
-  <a href="./README.ru.md">Русский</a> | 
-  <a href="./README.de.md">Deutsch</a> | 
-  <span>العربية</span> | 
+  <a href="./README.en.md">English</a> |
+  <a href="./README.es.md">Español</a> |
+  <a href="./README.ru.md">Русский</a> |
+  <a href="./README.de.md">Deutsch</a> |
+  <span>العربية</span> |
   <a href="./README.fil.md">Filipino</a>
 </p>
 
@@ -31,7 +32,7 @@
 
 ## الميزات:
 
-- إصدارات لـ ويندوز ولينكس.
+- إصدارات لـ ويندوز ولينكس و macOS.
 - تنسيقات الملفات المتوافقة<sup>[1]</sup>:
   - الكتب المصورة:
     - CBZ و CBR و CB7 و PDF<sup>[5]</sup> و EPUB<sup>[2]</sup>
@@ -109,12 +110,16 @@
 
 - [ويندوز](https://github.com/binarynonsense/comic-book-reader/releases/latest/download/ACBR_Windows.zip)
 - [ويندوز (Self-Extracting)](https://github.com/binarynonsense/comic-book-reader/releases/latest/download/ACBR_Windows_SelfExtracting.exe)
+- [macOS (DMG)](https://github.com/sangorrin/comic-book-reader/releases/latest/download/ACBR_macOS.zip)
+- [macOS (ZIP)](https://github.com/sangorrin/comic-book-reader/releases/latest/download/ACBR_macOS_App.zip)
 - [لينكس](https://github.com/binarynonsense/comic-book-reader/releases/latest/download/ACBR_Linux.zip)
 - [لينكس (AppImage)](https://github.com/binarynonsense/comic-book-reader/releases/latest/download/ACBR_Linux_AppImage.zip)
 - [لينكس (deb)](https://github.com/binarynonsense/comic-book-reader/releases/latest/download/ACBR_Linux_deb.zip)
 - [لينكس (flatpak)](https://github.com/binarynonsense/comic-book-reader/releases/latest/download/ACBR_Linux_flatpak.zip)
 
 > ملاحظة: بالنسبة لتوزيعات لينكس التي تتطلب تعيين ملف تعريف AppArmor لتشغيل تطبيقات Electron، مثل Ubuntu 24.04، من الأفضل عدم استخدام الإصدار العادي أو إصدار AppImage لأنهما قد لا يعملان بشكل افتراضي بسبب هذا القيد.
+>
+> ملاحظة: يتطلب إصدار macOS نظام macOS 10.13 أو أحدث وتم إنشاؤه فقط لـ Apple Silicon (M1/M2/M3).
 
 جميع الإصدارات (التجريبية والمستقرة):
 

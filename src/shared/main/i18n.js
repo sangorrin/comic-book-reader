@@ -5,6 +5,7 @@
  * SPDX-License-Identifier: BSD-2-Clause
  */
 
+const { app } = require("electron");
 const path = require("node:path");
 const fs = require("node:fs");
 const sanitizeHtml = require("sanitize-html");
